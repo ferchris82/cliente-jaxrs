@@ -8,6 +8,7 @@ import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.chrisferdev.cliente.jaxrs.models.Curso;
+import org.chrisferdev.cliente.jaxrs.models.Instructor;
 
 import java.util.List;
 
@@ -45,7 +46,11 @@ public class Main {
         cursoNuevo.setNombre("Spring Cloud");
         cursoNuevo.setDescripcion("spring cloud eureka");
         curso.setDuracion(25D);
-        cursoNuevo.setInstructor("Christian Rojas");
+        Instructor instructor = new Instructor();
+        instructor.setId(2L);
+        instructor.setNombre("Martha");
+        instructor.setApellido("Paz");
+        cursoNuevo.setInstructor(instructor);
 
         Entity<Curso> entityHeader = Entity.entity(cursoNuevo, MediaType.APPLICATION_JSON);
         curso = rootUri.request(MediaType.APPLICATION_JSON)
